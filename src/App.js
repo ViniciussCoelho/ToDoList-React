@@ -7,7 +7,7 @@ const API = "http://localhost:5000";
 
 function App() {
   const [title, setTitle] = useState('');
-  const [time, setTime] = useState('');
+  const [desc, setDesc] = useState('');
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,7 +27,7 @@ function App() {
     const todo = {
       id: Math.random(),
       title,
-      time,
+      desc,
       done: false
     };
 
@@ -41,7 +41,7 @@ function App() {
 
     setTodos(prevTodos => [...prevTodos, todo]);
     setTitle('');
-    setTime('');
+    setDesc('');
     console.log("Form submitted");
   }
 
@@ -84,8 +84,8 @@ function App() {
             <input type="text" name="title" placeholder="Task Title" onChange={(e) => setTitle(e.target.value)} value={title || ""} required />
           </div>
           <div className="form-control">
-            <label htmlFor="time">Time</label>
-            <input type="text" name="time" placeholder="Task time" onChange={(e) => setTime(e.target.value)} value={time || ""} required />
+            <label htmlFor="desc">Description</label>
+            <input type="text" name="Description" placeholder="Description" onChange={(e) => setDesc(e.target.value)} value={desc || ""} required />
           </div>
           <input type="submit" value="submit" />
         </form>
@@ -96,16 +96,16 @@ function App() {
         {todos.map(todo => (
           <div key={todo.id} className="todo">
             <h3 class={todo.done ? "todo-done" : ""}>{todo.title}</h3>
-            <p>Time: {todo.time}</p>
+            <p>{todo.desc}</p>
             <div className="actions">
               <span onClick={() => handleDone(todo)}>
-              {!todo.done ? <BsBookmarkCheck /> : <BsBookmarkCheckFill />}
-            </span>
-            <BsTrash onClick={() => handleDelete(todo.id)} />
-          </div>
+                {!todo.done ? <BsBookmarkCheck /> : <BsBookmarkCheckFill />}
+              </span>
+              <BsTrash onClick={() => handleDelete(todo.id)} />
+            </div>
           </div>
         ))}
-    </div>
+      </div>
     </div >
   );
 }

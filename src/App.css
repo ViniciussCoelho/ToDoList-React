@@ -74,10 +74,9 @@ input[type="submit"] {
 .todo {
   border-bottom: 1px solid #444;
   padding: 1em 0;
-}
-
-.todo h3 {
-  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .todo-done {
@@ -88,8 +87,7 @@ input[type="submit"] {
 .todo p {
   text-align: left;
   font-style: italic;
-  font-size: .7em;
-  margin-bottom: 1.5em;
+  font-size: 1em;
 }
 
 .todo svg {
